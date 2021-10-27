@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <!-- Medeival Sharp-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
+    <!-- Lora -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <nav>
+      <%- include ('../partials/welcome.ejs') %>
+    </nav>
+  <h1>Renaissance Collectibles</h1>
+    <div class="text">
+    <%JSON.stringify(products);%>
+    <br/>
+
+      <% for(let i=0; i< products.length; i++){ %>
+        <div class="card">
+          <img class="imgs" src="<%=products[i].img%>"></img><br/>
+          <div class="name">
+          <a class="namelink" href="/products/<%=products[i]._id%>">
+              <%=products[i].name; %>
+          </a>
+          </div>
+        </div>
+         <br/>
+    <%  } %>
+    </div>
+    <br/>
+    <nav>
+      <a class="new" href="/products/new">Create a new product</a>
+    </nav>
+    <style>
+      body {background-color: white}
+      .text {
+        display: flex; flex-wrap: wrap; gap: 10px
+      }
+      .delete{
+        font-size: 10px;
+        margin-left: 30px;
+        font-family: 'MedievalSharp', cursive;
+        background-color: white;
+        color: #0A7359
+      }
+      .imgs{
+        width: 250px;
+        height: 250px
+      }
+      .card{
+        border: 1px solid black;
+        border-radius: 25px;
+        padding: 20px;
+      }
+      .card:hover{
+        box-shadow: 2px 2px
+      }
+      h1   {color: #0A7359; ; font-family: 'MedievalSharp', cursive; text-align: center; transform: scale(1.2)}
+      h2   {color: #0A7359; ; font-family: 'MedievalSharp', cursive; }
+      nav{
+        text-align: center;
+      }
+      a   {color: #0A7359; ; font-family: 'Lora', serif; margin: 0 80px 0 80px}
+      .name{
+        background-color: #C94627;
+        height: 30px
+      }
+      .namelink{
+        color: white;
+        margin-top: 10px;
+      }
+      p    {color: red;}
+      li {text-decoration: none}
+    </style>
+  </body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <!-- MedievalSharp -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
+    <!-- Lora -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <h1>Collectible Information</h1>
+        <%JSON.stringify(product);%>
+     <h2>Name: <%=product.name%></h2>
+     <h2>Price: <%=product.price%></h2>
+     <div class="image">
+     <img class="imgs" src="<%=product.img%>"></img>
+     </div>
+     <br/>
+     <p>Description: <%=product.description%></p><br/>
+     <% if (product.qty<=0){ %>
+           <p>This item is not in stock</p>
+      <% } else { %>
+        <div class="belowimg">
+          <form action="/products/<%=product.id; %>/updatequantity?_method=PUT" method="POST">
+            <input class="editdelete" type="submit" value="Buy1" />
+          </form>
+            <br/>
+        </div>
+           <h5>Quantity: <%=product.qty%></h5><br/>
+      <% } %>
+      <nav>
+        <a class="return" href="/products">Back to Products</a><br/>
+        <a id="editbut" href="/products/<%=product.id; %>/edit"><button class="editdelete">Edit</button></a>
+        <form action="/products/<%=product.id%>?_method=DELETE" method="POST">
+          <input class="editdelete" type="submit" value="DELETE"/>
+        </form>
+      </nav>
+
+      <style>
+        body {background-color: white}
+        .text {
+          display: flex; flex-wrap: wrap; gap: 10px
+        }
+        .belowimg{
+          text-align: center;
+
+        }
+        .editdelete{
+          font-family: 'MedievalSharp', cursive; text-align: center;
+          background-color: white;
+          color: #0A7359;
+          margin: 10px;
+          font-size: 14px
+        }
+        .imgs{
+          width: 250px;
+          height: 250px;
+        }
+        .image{
+          display: flex;
+          justify-content: center;
+        }
+        #editbut{
+          margin-top: 10px
+        }
+        h1   {color: #0A7359; ; font-family: 'MedievalSharp', cursive; text-align: center}
+        h2   {color: #0A7359; ; font-family: 'MedievalSharp', cursive; text-align: center}
+        h5{
+          text-align: center;
+          color: #0A7359;
+          font-family: 'MedievalSharp', cursive;
+          font-size: 21px
+        }
+        nav{
+          text-align: center;
+        }
+        a   {color: #0A7359; font-family: 'Lora', serif; }
+        p    {text-align: center; font-family: 'Lora', serif;}
+      </style>
+
+  </body>
+</html>

@@ -1,0 +1,19 @@
+<a href="/products" class="brand-logo left">Welcome</a>
+ <ul class="right">
+   <li><a href="/products/new">Create a new product</a></li>
+ <% if (currentUser) { %>
+    <h1>Welcome <%=currentUser.username%></h1>
+    <li>
+      <form action="/sessions?_method=DELETE" method="POST">
+        <input type="Submit" value="Log Out" />
+      </form>
+    </li>
+ <% } else { %>
+   <a href="/users/new"><button>Sign Up</button></a><br/>
+   <a href="/sessions/new"><button>Log In</button></a>
+ <% } %>
+</ul>
+
+<style>
+  li {text-decoration: none}
+</style>
